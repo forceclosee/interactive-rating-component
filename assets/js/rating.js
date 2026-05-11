@@ -21,6 +21,7 @@ ratingWrapper.addEventListener("click", function (e) {
     ratingValue = ratingElement.getAttribute("data-value");
     // cek apakah sudah ada rating yang dipilih, hapus jika ada
     const activeRating = document.querySelector(".white-bg");
+
     if (activeRating) {
       activeRating.classList.remove("white-bg");
     }
@@ -36,9 +37,15 @@ submitButton.addEventListener("click", function () {
   if (ratingValue !== "") {
     ratingPage.classList.remove("visible");
     thankYouMessage.classList.add("visible");
+
     // jika tidak ada nilainya tampilkan alert message
   } else {
     alertMessage.classList.add("visible");
     ratingPage.classList.add("alert-animation");
+
+    // Menghapus class animasi setelah durasi 400ms selesai agar bisa di-trigger kembali
+    setTimeout(() => {
+      ratingPage.classList.remove("alert-animation");
+    }, 400);
   }
 });

@@ -29,17 +29,21 @@
   line-height: calc(1em + 0.5rem);
 }
 
-/* Reserve scrollbar area */
 html {
-  scrollbar-gutter: stable;
+  /* Enable smooth scrolling for anchor links */
+  scroll-behavior: smooth;
+  /* Enable keywords animations */
+  interpolate-size: allow-keywords;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    /* Enable smooth scrolling for anchor links */
-    scroll-behavior: smooth;
-    /* Enable keywords animations */
-    interpolate-size: allow-keywords;
+/* Applies styles when Reduced Motion is enabled */
+@media screen and (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
 
@@ -310,4 +314,23 @@ h6 {
   color: var(--grey-950);
   font-weight: 700;
   font-size: 1.2rem;
+}
+
+.alert-animation {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
 }
