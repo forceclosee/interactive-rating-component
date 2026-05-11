@@ -1,0 +1,313 @@
+/* BASE */
+/* Variables */
+:root {
+  --orange-500: hsl(25, 97%, 53%);
+  --white: hsl(0, 100%, 100%);
+  --grey-500: hsl(217, 12%, 63%);
+  --grey-900: hsl(213, 19%, 18%);
+  --grey-920: hsl(216, 12%, 12%);
+  --grey-950: hsl(216, 12%, 8%);
+  --attribution-link: hsl(228, 45%, 44%);
+  --warning: hsl(53, 100%, 21%);
+  --highlight: hsl(33, 100%, 28%);
+}
+
+/* Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* Increase line-height */
+* {
+  line-height: calc(1em + 0.5rem);
+}
+
+/* Reserve scrollbar area */
+html {
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    /* Enable smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+    /* Enable keywords animations */
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  /* set default font */
+  font:
+    400 1rem "Overpass",
+    sans-serif;
+  color: var(--white);
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* LAYOUT AND COMPONENTS */
+
+/* page layout */
+.page-layout {
+  min-height: 100vb; /* fallback for older browsers */
+  min-height: 100svb;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
+  background-color: var(--grey-950);
+  padding: 1.5rem;
+}
+
+/* MAIN */
+.interactive-rating {
+  max-inline-size: 25.75rem; /* max width terjadi di 460px */
+}
+
+/* rating state */
+.rating-page {
+  display: none;
+  background: linear-gradient(var(--grey-900), var(--grey-920));
+  border-radius: clamp(1rem, 9.4118vi - 1.2059rem, 1.5rem);
+  padding-block-start: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
+  padding-inline: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
+  padding-block-end: 2rem;
+}
+
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: clamp(2.5rem, 9.4118vi + 0.2941rem, 3rem);
+  inline-size: clamp(2.5rem, 9.4118vi + 0.2941rem, 3rem);
+  background-color: var(--grey-900);
+  border-radius: 50%;
+  margin-block-end: clamp(1.3rem, 18.8235vi - 3.1118rem, 2.3rem);
+}
+
+.logo-wrapper img {
+  inline-size: clamp(0.9rem, 1.8824vi + 0.4588rem, 1rem);
+  block-size: clamp(0.9rem, 1.8824vi + 0.4588rem, 1rem);
+  object-fit: contain;
+}
+
+.rating-page h1 {
+  opacity: 90%;
+  font-size: clamp(1.5rem, 4.7059vi + 0.3971rem, 1.75rem);
+  font-weight: 600;
+  margin-block-end: 0.7rem;
+}
+
+.rating-page > p {
+  opacity: 70%;
+  font-size: clamp(0.9rem, 1.1294vi + 0.6353rem, 0.96rem);
+  font-weight: 200;
+  margin-block-end: 1.4rem;
+}
+
+.rating-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  inline-size: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: "";
+  margin-block-end: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
+  padding: 0;
+}
+
+.rating {
+  flex: 0 0 clamp(2.6rem, 11.2941vi - 0.0471rem, 3.2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  block-size: clamp(2.6rem, 11.2941vi - 0.0471rem, 3.2rem);
+  background-color: var(--grey-900);
+  border-radius: 50%;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1.1294vi + 0.6353rem, 0.96rem);
+}
+
+.rating:hover,
+.rating:focus-visible {
+  background-color: var(--orange-500);
+  color: var(--grey-950);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition:
+    font-size 0.2s ease-out,
+    background-color 0.2s ease-out,
+    color 0.2s ease-out;
+}
+
+.rating p {
+  opacity: 70%;
+  padding-block-start: 0.2rem;
+}
+
+/* alert when user click submit without select rating */
+.alert-message {
+  display: none;
+  inline-size: fit-content;
+  background-color: var(--warning);
+  border-radius: 0.1rem;
+  margin-inline: auto;
+  padding: 0.5rem 1rem;
+  margin-block-end: 1.5rem;
+}
+
+.alert-message p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.alert-message p::before {
+  content: "";
+  display: inline-block;
+  background-image: url(/assets/img/circle-exclamation-solid-full.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  inline-size: 1.2rem;
+  block-size: 1.2rem;
+  margin-block-start: -0.2rem;
+}
+
+.submit-button {
+  display: block;
+  text-align: center;
+  inline-size: 100%;
+  background-color: var(--orange-500);
+  color: var(--grey-950);
+  text-transform: uppercase;
+  font-size: 90%;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: none;
+  margin-inline: auto;
+  padding: 0.75rem 0.8rem 0.55rem;
+  border-radius: 1.5rem;
+}
+
+.submit-button:hover,
+.submit-button:focus-visible {
+  background-color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+}
+
+/* thank you state */
+.thank-you-message {
+  display: none;
+  background: linear-gradient(var(--grey-900), var(--grey-920));
+  border-radius: clamp(1rem, 9.4118vi - 1.2059rem, 1.5rem);
+  padding-inline: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
+  padding-block: clamp(2rem, 18.8235vi - 2.4118rem, 3rem);
+  text-align: center;
+}
+
+.thank-you-message img {
+  display: block;
+  margin-inline: auto;
+  inline-size: 9rem;
+  inline-size: 10rem;
+  block-size: auto;
+  padding-block-end: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
+}
+
+.thank-you-message p:first-of-type {
+  display: inline-block;
+  opacity: 65%;
+  background-color: var(--grey-900);
+  color: var(--orange-500);
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.1294vi + 0.6353rem, 0.96rem);
+  border-radius: 1.5rem;
+  padding: 0.45rem 0.75rem 0.25rem;
+  margin-block-end: clamp(1.7rem, 11.2941vi - 0.9471rem, 2.3rem);
+}
+
+.thank-you-message h2 {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4.7059vi + 0.3971rem, 1.75rem);
+  margin-block-end: 0.7rem;
+}
+
+.thank-you-message p:last-of-type {
+  opacity: 60%;
+  font-weight: 200;
+  font-size: clamp(0.9rem, 1.1294vi + 0.6353rem, 0.96rem);
+}
+
+/* FOOTER */
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+
+  a {
+    color: var(--attribution-link);
+  }
+}
+
+/* UTILITY CLASSES */
+.visible {
+  display: block;
+}
+
+.white-bg {
+  background-color: var(--white);
+  color: var(--grey-950);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
