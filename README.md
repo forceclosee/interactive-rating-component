@@ -1,6 +1,6 @@
-# Frontend Mentor - Interactive rating component solution
+# Fluid and Interactive Rating Component using CSS clamp() & Vanilla JS
 
-This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -15,9 +15,6 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
   - [Useful resources](#useful-resources)
   - [AI Collaboration](#ai-collaboration)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -28,97 +25,106 @@ Users should be able to:
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Select and submit a number rating
+- See the active state of the rating number they selected before submitting
+- Get alert message and shake animation when submitting an empty rating
 - See the "Thank you" card state after submitting a rating
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./assets/img/screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution URL](https://github.com/forceclosee/interactive-rating-component)
+- Live Site URL: [live site URL](https://your-live-site-url.com) <!-- ganti link -->
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- CSS custom properties (Variables)
 - Flexbox
 - CSS Grid
+- CSS Logical Properties (e.g., `inline-size`, `block-size`, `padding-block`)
+- CSS `clamp()` function for fluid and responsive design
+- Vanilla JavaScript (DOM Manipulation, Event listeners, Timers)
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+In this project, I significantly improved my understanding of combining JavaScript event listeners and CSS animations to create an interactive and responsive user experience.
 
-To see how you can add code snippets, see below:
+On the JavaScript side, I learned about **Event Delegation**. Instead of adding an event listener to every single rating number, I added a single `click` event listener to the parent container (`.rating-wrapper`). Using `e.target.closest()`, I could efficiently determine which rating was clicked:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
+```javascript
+ratingWrapper.addEventListener("click", function (e) {
+  // Find the closest element with the class "rating"
+  const ratingElement = e.target.closest(".rating");
+
+  if (ratingElement) {
+    ratingValue = ratingElement.getAttribute("data-value");
+    // Styling updates follow...
+  }
+});
 ```
+
+Another major highlight was learning how to implement a custom "shake" animation to visually alert users when they try to submit an empty rating. I defined the animation using `@keyframes`:
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.alert-animation {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
 }
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+
+I also learned how to manage animation states by combining event listeners with `setTimeout`. This allows the shake animation to be re-triggered multiple times if the user repeatedly clicks the submit button without selecting a rating:
+
+```javascript
+// Trigger and reset the shake animation state after 400ms
+ratingPage.classList.add("alert-animation");
+setTimeout(() => {
+  ratingPage.classList.remove("alert-animation");
+}, 400);
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Google Fonts](https://fonts.google.com/) - Provided the Overpass font family used throughout the project. A great free resource for web-safe fonts.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [TinyPNG](https://tinypng.com/) - Helped me compress and optimize the images in the project without losing quality, making the page load faster.
+
+- [Cloudinary](https://cloudinary.com/) - Used to host the Open Graph and Twitter card images for social media sharing.
+
+- [Perfect Pixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjlophiddqccjgplachon0304v) - Chrome extension that allowed me to overlay the design mockup directly on my live page for pixel-perfect accuracy.
 
 ### AI Collaboration
 
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
+In this project, I collaborated with an AI assistant (Gemini) to enhance my workflow, solve specific technical roadblocks, and deepen my understanding of modern web development concepts. Here is how I utilized AI:
 
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
+- **Fluid Typography and Spacing**: I used AI to quickly calculate complex `clamp()` math values for font sizes, paddings, and margins based on my specific minimum and maximum viewport requirements.
+- **Debugging SVGs**: AI helped me understand why my SVGs were collapsing to `0px` when using `block-size: auto` and guided me to implement the `viewBox` attribute as a best practice.
+- **Interactive Animations**: I brainstormed with AI to implement the 'shake' animation using CSS `@keyframes` and JavaScript `setTimeout` to handle form validation errors.
+- **SEO & Meta Tags**: AI assisted in generating and organizing Open Graph and Twitter Card tags to ensure the project looks great when shared on social media.
 
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
+Working with AI allowed me to focus more on the core logic and design implementation while significantly speeding up repetitive calculations and debugging processes.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- GitHub - [Force Close](https://github.com/forceclosee)
+- Frontend Mentor - [@forceclosee](https://www.frontendmentor.io/profile/forceclosee)
+- X - [@forceclosee](https://x.com/forceclosee)
