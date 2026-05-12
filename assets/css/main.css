@@ -264,8 +264,7 @@ h6 {
 .thank-you-message img {
   display: block;
   margin-inline: auto;
-  inline-size: 9rem;
-  inline-size: 10rem;
+  inline-size: clamp(9rem, 18.8235vi + 4.5882rem, 10rem);
   block-size: auto;
   padding-block-end: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
 }
