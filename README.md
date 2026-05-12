@@ -102,15 +102,21 @@ setTimeout(() => {
 }, 400);
 ```
 
+### Continued development
+
+In future projects, I want to focus on:
+
+- **Accessibility (a11y)**: I want to dive deeper into making my web components fully accessible. This includes adding proper keyboard navigation (like using `Tab` and `Enter` to select ratings) and implementing ARIA attributes so screen readers can properly interpret the interactive states.
+- **Advanced CSS Animations**: While implementing the custom shake animation was a great learning experience, I'd like to explore more complex state transitions and micro-interactions to make user interfaces feel even more polished.
+- **State Management**: Managing the active states and form submissions with Vanilla JavaScript was highly educational. Next, I want to learn how modern frontend frameworks like React or Vue handle UI state for larger, more complex applications.
+
 ### Useful resources
 
 - [Google Fonts](https://fonts.google.com/) - Provided the Overpass font family used throughout the project. A great free resource for web-safe fonts.
-
 - [TinyPNG](https://tinypng.com/) - Helped me compress and optimize the images in the project without losing quality, making the page load faster.
-
 - [Cloudinary](https://cloudinary.com/) - Used to host the Open Graph and Twitter card images for social media sharing.
-
 - [Perfect Pixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjlophiddqccjgplachon0304v) - Chrome extension that allowed me to overlay the design mockup directly on my live page for pixel-perfect accuracy.
+- [FontAwesome](https://fontawesome.com/) - A great library used for adding scalable vector icons easily throughout the project.
 
 ### AI Collaboration
 
