@@ -1,52 +1,52 @@
 const ratingPage = document.querySelector(".rating-page");
-// element ul yang berisi list rating dengan class "rating-wrapper" dan atribut data-value untuk menyimpan nilai rating yang dipilih.
 const ratingWrapper = document.querySelector(".rating-wrapper");
-// element span untuk menampilkan nilai rating yang dipilih dengan class "rating-selected"
 const ratingSelected = document.querySelector(".rating-selected");
 const submitButton = document.querySelector(".submit-button");
-// thank you message setelah klik submit
 const thankYouMessage = document.querySelector(".thank-you-message");
-// alert jika user belum memilih rating
 const alertMessage = document.querySelector(".alert-message");
-// Variabel untuk menyimpan nilai rating yang dipilih
+
+// Variable to store the selected rating value, initialized as an empty string
 let ratingValue = "";
 
 ratingWrapper.addEventListener("click", function (e) {
-  // Mencari element terdekat yang memiliki class "rating" dari elemen yang diklik
+  // look for the closest ancestor element with the class "rating" starting from the clicked target
   const ratingElement = e.target.closest(".rating");
 
-  // conditional untuk menjalankan function hanya jika target yang diklik adalah atau berada di dalam elemen "rating"
+  // conditional to check if a rating element was found
   if (ratingElement) {
-    // Mengambil angka rating dari elemen ratingElement
+    // get the value of the "data-value" attribute from the clicked rating element and store it in the ratingValue variable
     ratingValue = ratingElement.getAttribute("data-value");
-    // cek apakah sudah ada rating yang dipilih, hapus jika ada
+
+    // check if there is an active rating (an element with the class "white-bg")
     const activeRating = document.querySelector(".white-bg");
 
+    // if there is an active rating, remove the "white-bg" class from it to reset the previous selection
     if (activeRating) {
       activeRating.classList.remove("white-bg");
     }
-    // memberi background putih pada rating yang dipilih
+
+    // add the "white-bg" class to the clicked rating element to visually indicate that it is selected
     ratingElement.classList.add("white-bg");
-    // menambahkan nilai rating ke dalam elemen ratingSelected
+    // add rating value to the ratingSelected element to display the selected rating to the user
     ratingSelected.textContent = `${ratingValue}`;
   }
 });
 
 submitButton.addEventListener("click", function () {
-  // jika ada nilainya tampilkan thankyou message
+  // if user has selected a rating (ratingValue is not an empty string), hide the rating page and show the thank you message
   if (ratingValue !== "") {
     ratingPage.classList.remove("visible");
     ratingPage.setAttribute("aria-hidden", "true");
     thankYouMessage.classList.add("visible");
     thankYouMessage.setAttribute("aria-hidden", "false");
 
-    // jika tidak ada nilainya tampilkan alert message
+    // if user has not selected a rating (ratingValue is still an empty string), show an alert message and add an animation to the rating page to draw attention to the alert
   } else {
     alertMessage.classList.add("visible");
     alertMessage.setAttribute("aria-hidden", "false");
     ratingPage.classList.add("alert-animation");
 
-    // Menghapus class animasi setelah durasi 400ms selesai agar bisa di-trigger kembali
+    // set a timeout to remove the "alert-animation" class from the rating page after 400 milliseconds, allowing the animation to retrigger
     setTimeout(() => {
       ratingPage.classList.remove("alert-animation");
     }, 400);
