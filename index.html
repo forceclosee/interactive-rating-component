@@ -46,7 +46,7 @@
     <main class="interactive-rating">
 
       <!-- Rating state start -->
-      <section class="rating-page visible">
+      <section class="rating-page visible" aria-hidden="false">
         <div class="logo-wrapper">
           <img src="/assets/img/icon-star.svg" alt="" width="17" height="16">
         </div>
@@ -71,7 +71,7 @@
             <p>5</p>
           </li>
         </ul>
-        <div class="alert-message">
+        <div class="alert-message" role="alert" aria-hidden="true">
           <p>Please select a rating</p>
         </div>
         <button class="submit-button">Submit</button>
@@ -79,7 +79,7 @@
       <!-- Rating state end -->
 
       <!-- Thank you state start -->
-      <section class="thank-you-message">
+      <section class="thank-you-message" role="status" aria-hidden="true">
         <img src="/assets/img/illustration-thank-you.svg" alt="Thank you illustration" width="162" height="108">
         <p>You selected <span class="rating-selected"></span> out of 5</p>
         <h2>Thank you!</h2>

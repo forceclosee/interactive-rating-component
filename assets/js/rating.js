@@ -36,11 +36,14 @@ submitButton.addEventListener("click", function () {
   // jika ada nilainya tampilkan thankyou message
   if (ratingValue !== "") {
     ratingPage.classList.remove("visible");
+    ratingPage.setAttribute("aria-hidden", "true");
     thankYouMessage.classList.add("visible");
+    thankYouMessage.setAttribute("aria-hidden", "false");
 
     // jika tidak ada nilainya tampilkan alert message
   } else {
     alertMessage.classList.add("visible");
+    alertMessage.setAttribute("aria-hidden", "false");
     ratingPage.classList.add("alert-animation");
 
     // Menghapus class animasi setelah durasi 400ms selesai agar bisa di-trigger kembali
