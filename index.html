@@ -3,39 +3,61 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <!-- SEO Meta Tags -->
   <title>Force Close | Interactive rating component</title>
-  <meta name="author" content="Force Close">
-  <meta name="description" content="Force Close solution for the Interactive rating component challenge from Frontend Mentor.">
-  <meta name="keywords" content="Force Close, Frontend Mentor, Interactive rating component, HTML, CSS, JavaScript, Web Development">
+  <meta name="author"
+    content="Force Close">
+  <meta name="description"
+    content="Force Close solution for the Interactive rating component challenge from Frontend Mentor.">
+  <meta name="keywords"
+    content="Force Close, Frontend Mentor, Interactive rating component, HTML, CSS, JavaScript, Web Development">
 
   <!-- OG Tags -->
-  <meta property="og:title" content="Force Close | Interactive rating component">
-  <meta property="og:description" content="Force Close solution for the Interactive rating component challenge from Frontend Mentor.">
-  <meta property="og:image" content="https://res.cloudinary.com/dspqgpnvq/image/upload/v1778474288/interactive-rating-component_d444qy.png">
-  <meta property="og:url" content="https://forceclose-interactive-rating-component.vercel.app/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Force Close Portfolio">
+  <meta property="og:title"
+    content="Force Close | Interactive rating component">
+  <meta property="og:description"
+    content="Force Close solution for the Interactive rating component challenge from Frontend Mentor.">
+  <meta property="og:image"
+    content="https://res.cloudinary.com/dspqgpnvq/image/upload/v1778474288/interactive-rating-component_d444qy.png">
+  <meta property="og:url"
+    content="https://forceclose-interactive-rating-component.vercel.app/">
+  <meta property="og:type"
+    content="website">
+  <meta property="og:site_name"
+    content="Force Close Portfolio">
 
   <!-- Twitter Card Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Force Close | Interactive rating component">
-  <meta name="twitter:description" content="Force Close solution for the Interactive rating component challenge from Frontend Mentor.">
-  <meta name="twitter:image" content="https://res.cloudinary.com/dspqgpnvq/image/upload/v1778474288/interactive-rating-component_d444qy.png">
-  <meta property="twitter:url" content="https://forceclose-interactive-rating-component.vercel.app/">
+  <meta name="twitter:card"
+    content="summary_large_image">
+  <meta name="twitter:title"
+    content="Force Close | Interactive rating component">
+  <meta name="twitter:description"
+    content="Force Close solution for the Interactive rating component challenge from Frontend Mentor.">
+  <meta name="twitter:image"
+    content="https://res.cloudinary.com/dspqgpnvq/image/upload/v1778474288/interactive-rating-component_d444qy.png">
+  <meta property="twitter:url"
+    content="https://forceclose-interactive-rating-component.vercel.app/">
 
   <!-- favicon -->
-  <link rel="icon" href="/assets/img/logo-force-close.svg" type="image/svg+xml">
+  <link rel="icon"
+    href="/assets/img/logo-force-close.svg"
+    type="image/svg+xml">
 
   <!-- font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect"
+    href="https://fonts.googleapis.com">
+  <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
   <!-- stylesheet -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet"
+    href="/assets/css/main.css">
 
   <!-- javascript -->
   <script src="/assets/js/rating.js" defer></script>
@@ -49,41 +71,116 @@
     <main class="interactive-rating">
 
       <!-- Rating state start -->
-      <section class="rating-page visible" aria-hidden="false">
+      <section id="rating-page"
+        class="rating-page">
         <div class="logo-wrapper">
-          <img src="/assets/img/icon-star.svg" alt="" width="17" height="16">
+          <img src="/assets/img/icon-star.svg"
+            alt=""
+            width="17"
+            height="16">
         </div>
         <h1>How did we do?</h1>
         <p>
           Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!
         </p>
-        <ul class="rating-wrapper">
-          <li class="rating" data-value="1">
-            <p>1</p>
-          </li>
-          <li class="rating" data-value="2">
-            <p>2</p>
-          </li>
-          <li class="rating" data-value="3">
-            <p>3</p>
-          </li>
-          <li class="rating" data-value="4">
-            <p>4</p>
-          </li>
-          <li class="rating" data-value="5">
-            <p>5</p>
-          </li>
-        </ul>
-        <div class="alert-message" role="alert" aria-hidden="true">
-          <p>Please select a rating</p>
-        </div>
-        <button class="submit-button">Submit</button>
+        <form id="rating-form"
+          class="rating-form"
+          novalidate>
+
+          <div class="rating-selection-wrapper">
+            <div class="form-group">
+              <input type="radio"
+                name="rating-selection"
+                id="rating-1"
+                class="input"
+                value="1"
+                required>
+              <label for="rating-1"
+                class="rating">
+                1
+              </label>
+            </div>
+
+            <div class="form-group">
+              <input type="radio"
+                name="rating-selection"
+                id="rating-2"
+                class="input"
+                value="2"
+                required>
+              <label for="rating-2"
+                class="rating">
+                2
+              </label>
+            </div>
+
+            <div class="form-group">
+              <input type="radio"
+                name="rating-selection"
+                id="rating-3"
+                class="input"
+                value="3"
+                required>
+              <label for="rating-3"
+                class="rating">
+                3
+              </label>
+            </div>
+
+            <div class="form-group">
+              <input type="radio"
+                name="rating-selection"
+                id="rating-4"
+                class="input"
+                value="4"
+                required>
+              <label for="rating-4"
+                class="rating">
+                4
+              </label>
+            </div>
+
+            <div class="form-group">
+              <input type="radio"
+                name="rating-selection"
+                id="rating-5"
+                class="input"
+                value="5"
+                required>
+              <label for="rating-5"
+                class="rating">
+                5
+              </label>
+            </div>
+          </div>
+
+          <span id="alert-message"
+            class="alert-message"
+            role="alert"
+            aria-hidden="true">
+            Please select a rating
+          </span>
+
+          <button type="submit"
+            class="submit-button">
+            Submit
+          </button>
+        </form>
+
+
       </section>
       <!-- Rating state end -->
 
       <!-- Thank you state start -->
-      <section class="thank-you-message" role="status" aria-hidden="true">
-        <img src="/assets/img/illustration-thank-you.svg" alt="Thank you illustration" width="162" height="108">
+      <section id="thank-you-message"
+        class="thank-you-message"
+        role="status"
+        tabindex="-1"
+        aria-hidden="true">
+        <img src="/assets/img/illustration-thank-you.svg"
+          alt="Thank you illustration"
+          width="162"
+          height="108">
         <p>You selected <span class="rating-selected"></span> out of 5</p>
         <h2>Thank you!</h2>
         <p>
@@ -95,7 +192,9 @@
     </main>
 
     <footer class="attribution">
-      <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by <a href="https://github.com/forceclosee" target="_blank" rel="noopener noreferrer">Force Close</a>.</p>
+      <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. Coded by <a href="https://github.com/forceclosee"
+          target="_blank"
+          rel="noopener noreferrer">Force Close</a>.</p>
     </footer>
   </div>
 </body>

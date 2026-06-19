@@ -8,8 +8,8 @@
   --grey-920: hsl(216, 12%, 12%);
   --grey-950: hsl(216, 12%, 8%);
   --attribution-link: hsl(228, 45%, 44%);
-  --warning: hsl(53, 100%, 21%);
   --highlight: hsl(33, 100%, 28%);
+  --text-warning: oklch(0.65 0.2 18);
 }
 
 /* Use a more-intuitive box-sizing model */
@@ -119,12 +119,16 @@ h6 {
 
 /* rating state */
 .rating-page {
-  display: none;
+  display: block;
   background: linear-gradient(var(--grey-900), var(--grey-920));
   border-radius: clamp(1rem, 9.4118vi - 1.2059rem, 1.5rem);
   padding-block-start: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
   padding-inline: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
   padding-block-end: 2rem;
+
+  &[inert] {
+    display: none;
+  }
 }
 
 .logo-wrapper {
@@ -152,71 +156,86 @@ h6 {
 }
 
 .rating-page > p {
+  display: block;
   opacity: 70%;
   font-size: clamp(0.9rem, 1.1294vi + 0.6353rem, 0.96rem);
   font-weight: 200;
   margin-block-end: 1.4rem;
 }
 
-.rating-wrapper {
+.rating-form {
   display: flex;
-  flex-wrap: wrap;
-  inline-size: 100%;
-  justify-content: space-between;
-  gap: 1rem;
-  list-style: "";
-  margin-block-end: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
-  padding: 0;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.rating {
-  flex: 0 0 clamp(2.6rem, 11.2941vi - 0.0471rem, 3.2rem);
+.rating-selection-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  block-size: clamp(2.6rem, 11.2941vi - 0.0471rem, 3.2rem);
+  gap: 1.2rem;
+}
+
+.form-group {
+  position: relative;
+  inline-size: 3.25rem;
+  block-size: 3.25rem;
   background-color: var(--grey-900);
   border-radius: 50%;
-  font-weight: 500;
-  font-size: clamp(0.9rem, 1.1294vi + 0.6353rem, 0.96rem);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--white);
+      color: var(--grey-950);
+    }
+  }
+
+  &:focus-within {
+    background-color: var(--orange-500);
+    color: var(--grey-950);
+  }
+
+  &:has(:checked) {
+    background-color: var(--orange-500);
+  }
 }
 
-.rating:hover,
-.rating:focus-visible {
-  background-color: var(--orange-500);
-  color: var(--grey-950);
+.input {
+  position: absolute;
+  inset: 0;
   cursor: pointer;
-  font-weight: 700;
-  font-size: 1.2rem;
-  transition:
-    font-size 0.2s ease-out,
-    background-color 0.2s ease-out,
-    color 0.2s ease-out;
+  opacity: 0;
 }
 
-.rating p {
-  opacity: 70%;
-  padding-block-start: 0.2rem;
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  text-box: trim-both cap alphabetic;
+  font-weight: 600;
 }
 
 /* alert when user click submit without select rating */
 .alert-message {
   display: none;
+  align-items: center;
+  gap: 0.5rem;
   inline-size: fit-content;
-  background-color: var(--warning);
+  background-color: var(--grey-900);
+  color: var(--text-warning);
   border-radius: 0.1rem;
   margin-inline: auto;
   padding: 0.5rem 1rem;
-  margin-block-end: 1.5rem;
 }
 
-.alert-message p {
+.rating-selection-wrapper:has(:user-invalid) + .alert-message {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-.alert-message p::before {
+.alert-message::before {
   content: "";
   display: inline-block;
   background-image: url(/assets/img/circle-exclamation-solid-full.svg);
@@ -259,6 +278,10 @@ h6 {
   padding-inline: clamp(1.5rem, 9.4118vi - 0.7059rem, 2rem);
   padding-block: clamp(2rem, 18.8235vi - 2.4118rem, 3rem);
   text-align: center;
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
 }
 
 .thank-you-message img {
@@ -306,13 +329,6 @@ h6 {
 /* UTILITY CLASSES */
 .visible {
   display: block;
-}
-
-.white-bg {
-  background-color: var(--white);
-  color: var(--grey-950);
-  font-weight: 700;
-  font-size: 1.2rem;
 }
 
 .alert-animation {
