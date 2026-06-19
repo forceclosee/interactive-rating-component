@@ -15,6 +15,7 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
   - [Useful resources](#useful-resources)
   - [AI Collaboration](#ai-collaboration)
 - [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -35,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution URL](https://github.com/forceclosee/interactive-rating-component)
+- Solution URL: [solution URL](https://www.frontendmentor.io/solutions/fluid-and-interactive-rating-component-using-css-clamp-and-vanilla-js-XfFKUHjnSh)
 - Live Site URL: [live site URL](https://forceclose-interactive-rating-component.vercel.app/)
 
 ## My process
@@ -117,6 +118,7 @@ In future projects, I want to focus on:
 - [Cloudinary](https://cloudinary.com/) - Used to host the Open Graph and Twitter card images for social media sharing.
 - [Perfect Pixel](https://chrome.google.com/webstore/detail/perfectpixel-by-welldonec/dkaagdgjlophiddqccjgplachon0304v) - Chrome extension that allowed me to overlay the design mockup directly on my live page for pixel-perfect accuracy.
 - [FontAwesome](https://fontawesome.com/) - A great library used for adding scalable vector icons easily throughout the project.
+- [Inclusively Hiding and Styling Checkboxes and Radio Buttons](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/) - An excellent, comprehensive guide from Sara Soueidan on how to style custom checkboxes and radio buttons accessibly. Extremely helpful for building rating components or custom forms!
 
 ### AI Collaboration
 
@@ -134,3 +136,7 @@ Working with AI allowed me to focus more on the core logic and design implementa
 - GitHub - [Force Close](https://github.com/forceclosee)
 - Frontend Mentor - [@forceclosee](https://www.frontendmentor.io/profile/forceclosee)
 - X - [@forceclosee](https://x.com/forceclosee)
+
+## Acknowledgments
+
+Huge thanks to [ashkir](https://www.frontendmentor.io/profile/ashkir004) for suggesting to make the rating items keyboard-interactive.
